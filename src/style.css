@@ -1,0 +1,127 @@
+* {margin:0; padding:0}
+body {
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color:#6062E7;
+}
+.title{
+  font-size: 3rem;
+  color: #F9D1F8;
+  margin-bottom: 50px; 
+}
+.footer {
+  justify-self: flex-end;
+  margin-top: 50px;
+  color: #F9D1F8;
+}
+.footer a{
+  color: inherit;
+}
+.landscape {
+  display: none;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  color: #F9D1F8;
+}
+.landscape i {
+  text-align: center;
+  font-size: 100px;
+  color: inherit;
+  margin-top: 30px;
+  animation: rotate 1.5s linear .5s infinite;
+}
+.container {
+  display: grid;
+  align-items: center;
+  max-width: 280px;
+  width: 60%;
+  grid-template-rows: repeat(3, 60px);
+  grid-template-columns: 1fr 20px 1fr 20px 1fr;
+}
+@media screen and (max-width: 800px) and (orientation:portrait){
+  .container{
+    display: none;
+  }
+  .landscape {
+    display: flex;
+  }
+}
+@media screen and (max-width: 800px) and (orientation:landscape){
+  .container{
+    display: grid;
+  }
+  .landscape {
+    display: none;
+  }
+}
+input, button{
+  font-family: 'Montserrat', sans-serif;
+  height: 30px;
+  width: 100%;
+  font-size: 20px;
+  line-height: 30px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  outline: none;
+}
+button:active {
+  animation: click .2s linear;
+}
+input#red {
+  grid-column: 1;
+  color: red;
+}
+input#red::placeholder {
+  color: red;
+  font-weight: 200;
+}
+input#green {
+  grid-column: 3;
+  color: green;
+}
+input#green::placeholder {
+  color: green;
+  font-weight: 200;
+}
+input#blue {
+  grid-column: 5;
+  color: blue;
+}
+input#blue::placeholder {
+  color: blue;
+  font-weight: 200;
+}
+button#btnHex{
+  grid-column: span 2;
+}
+button#btnRgb{
+  grid-column: 4 / span 2;
+}
+input#hex{
+  grid-column: 1 / 6;
+  text-transform: uppercase;
+}
+input#hex::placeholder{
+  font-weight: 200;
+}
+@keyframes rotate {
+  0% {transform: rotateZ(0deg)}
+  50% {transform: rotateZ(100deg)}
+  100% {transform: rotate(0deg)}
+}
+@keyframes click {
+  0% {transform: scale(1)}
+  50% {transform: scale(.95)}
+  100% {transform: scale(1)}
+}
+/* utils */
+.pointer {
+  cursor: pointer;
+}

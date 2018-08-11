@@ -1,0 +1,19 @@
+{
+  "name": "colors",
+  "version": "1.0.0",
+  "description": "Page to convert RGB to Hexadecimal and vice versa.",
+  "main": "main.js",
+  "scripts": {
+    "build-js": "babel src --out-dir dist",
+    "build-css": "postcss src/*.css --dir dist"
+  },
+  "homepage": "https://github.com/lagapog/cconverter",
+  "author": "Luis Agapito <luisagapito.g@gmail.com> (http://www.luisagapito.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.1.0",
+    "babel-preset-env": "^1.7.0",
+    "cssnano": "^4.0.5",
+    "postcss-cli": "^6.0.0"
+  }
+}

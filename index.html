@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Page to easily convert colors from hexadecimal to rgb and vice versa.">
+  <meta name="keywords" content="color, rgb, hexadecimal, hex, convert, color converter">
+  <title>Color Converter</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link rel="stylesheet" href="dist/style.css">
+</head>
+<body id="body">
+  <h1 class="title" id="title">Color Converter</h1>
+  <div class="landscape" id="landscape">
+    Tourn your device
+    <i class="material-icons">screen_rotation</i>
+  </div>
+  <div class="container">
+      <input type="text" id="red" placeholder="Red" onkeypress="return validateNumbers(event)" onkeyup="checkStatusBtnHex()">
+      <input type="text" id="green" placeholder="Green" onkeypress="return validateNumbers(event)" onkeyup="checkStatusBtnHex()">
+      <input type="text" id="blue" placeholder="Blue" onkeypress="return validateNumbers(event)" onkeyup="checkStatusBtnHex()">
+      <button id="btnHex" class="pointer" disabled>HEX</button>
+      <button id="btnRgb" class="pointer" disabled>RGB</button>
+      <input type="text" id="hex" placeholder="#4D12FF" onkeypress="return validateHexa(event)" onkeyup="checkStatusBtnRgb()">
+  </div>
+  <footer class="footer">
+    <p id="footer">by <a href="https://luisagapito.com" target="_blank">Luis Agapito</a>. <span id="year"><span></p>
+  </footer>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="dist/main.js"></script>
+</body>
+</html>
