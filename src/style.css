@@ -37,6 +37,7 @@ body {
   animation: rotate 1.5s linear .5s infinite;
 }
 .container {
+  position: relative;
   display: grid;
   align-items: center;
   max-width: 280px;
@@ -103,6 +104,23 @@ button#btnHex{
 }
 button#btnRgb{
   grid-column: 4 / span 2;
+}
+button#copyRgb,
+button#copyHex{
+  width: 30px;
+  position: absolute;
+  right: -40px;
+}
+button#copyRgb {
+  top: 15px;
+}
+button#copyHex {
+  bottom: 15px;
+}
+button#copyRgb i,
+button#copyHex i{
+  font-size: 18px;
+  line-height: 30px;
 }
 input#hex{
   grid-column: 1 / 6;

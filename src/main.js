@@ -9,6 +9,8 @@ const $blueInput = document.getElementById('blue')
 const $hexInput = document.getElementById('hex')
 const $btnRgb = document.getElementById('btnRgb')
 const $btnHex = document.getElementById('btnHex')
+const $copyRgb = document.getElementById('copyRgb')
+const $copyHex = document.getElementById('copyHex')
 const $year = document.getElementById('year')
 // add listeners
 $btnRgb.addEventListener('click', convertHexToRgb)
@@ -64,14 +66,18 @@ function checkStatusBtnHex() {
   let redValue = $redInput.value
   let greenValue = $greenInput.value
   let blueValue = $blueInput.value
-  $btnHex.disabled = !(checkRGBValue(redValue) && checkRGBValue(greenValue) && checkRGBValue(blueValue))
+  let status = !(checkRGBValue(redValue) && checkRGBValue(greenValue) && checkRGBValue(blueValue))
+  $copyRgb.disabled = status
+  $btnHex.disabled = status
 }
 function checkRGBValue(value) {
   return !(value == '' || (value < 0 || value > 255))
 }
 function checkStatusBtnRgb() {
   let hexValue = $hexInput.value
-  $btnRgb.disabled = !(hexValue.length == 7)
+  let status = !(hexValue.length == 7)
+  $copyHex.disabled = status
+  $btnRgb.disabled = status
 }
 function paintBody(color) {
   $body.style.backgroundColor = color
