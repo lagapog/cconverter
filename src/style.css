@@ -72,6 +72,9 @@ input, button{
   text-align: center;
   outline: none;
 }
+button:not([disabled]) {
+  box-shadow: 3px 3px 5px -1px black;
+}
 button:active {
   animation: click .2s linear;
 }
@@ -128,6 +131,20 @@ input#hex{
 }
 input#hex::placeholder{
   font-weight: 200;
+}
+#rgbColorToCopy {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#messageRgb, #messageHex{
+  position: absolute;
+  left: 120%;
+  width: 230px;
+  font-size: .75rem;
+  text-align: left;
+  opacity: 0;
+  transition: all .2s;
 }
 @keyframes rotate {
   0% {transform: rotateZ(0deg)}

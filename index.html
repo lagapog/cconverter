@@ -22,16 +22,19 @@
       <input type="text" id="red" placeholder="Red" onkeypress="return validateNumbers(event)" onkeyup="checkStatusBtnHex()">
       <input type="text" id="green" placeholder="Green" onkeypress="return validateNumbers(event)" onkeyup="checkStatusBtnHex()">
       <input type="text" id="blue" placeholder="Blue" onkeypress="return validateNumbers(event)" onkeyup="checkStatusBtnHex()">
-      <button id="copyRgb" class="pointer" disabled>
+      <button id="copyRgb" class="pointer" style="display: none">
         <i class="material-icons">file_copy</i>
+        <span id="messageRgb"></span>
       </button>
       <button id="btnHex" class="pointer" disabled>HEX</button>
       <button id="btnRgb" class="pointer" disabled>RGB</button>
       <input type="text" id="hex" placeholder="#4D12FF" onkeypress="return validateHexa(event)" onkeyup="checkStatusBtnRgb()">
-      <button id="copyHex" class="pointer" disabled>
+      <button id="copyHex" class="pointer" style="display: none">
         <i class="material-icons">file_copy</i>
+        <span id="messageHex"></span>
       </button>
   </div>
+  <textarea id="rgbColorToCopy"></textarea>
   <footer class="footer">
     <p id="footer">by <a href="https://luisagapito.com" target="_blank">Luis Agapito</a>. <span id="year"><span></p>
   </footer>

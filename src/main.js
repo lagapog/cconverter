@@ -11,17 +11,36 @@ const $btnRgb = document.getElementById('btnRgb')
 const $btnHex = document.getElementById('btnHex')
 const $copyRgb = document.getElementById('copyRgb')
 const $copyHex = document.getElementById('copyHex')
+const $messageRgb = document.getElementById('messageRgb')
+const $messageHex = document.getElementById('messageHex')
+const $textarea = document.getElementById('rgbColorToCopy')
 const $year = document.getElementById('year')
 // add listeners
 $btnRgb.addEventListener('click', convertHexToRgb)
 $btnHex.addEventListener('click', convertRgbToHex)
-
+copyRgb.addEventListener('click', copyRgbColor)
+copyHex.addEventListener('click', copyHexColor)
 // add the year
 const date = new Date()
 const year = date.getFullYear()
 $year.innerHTML = year
 
 //event handlers
+function copyRgbColor() {
+  const red = $redInput.value
+  const green = $greenInput.value
+  const blue = $blueInput.value
+  $textarea.value = `rgb(${red}, ${green}, ${blue})`
+  $textarea.focus()
+  $textarea.select()
+  document.execCommand('copy')
+  showCopyMessage($textarea.value, $messageRgb)
+}
+function copyHexColor() {
+  $hexInput.select()
+  document.execCommand('copy')
+  showCopyMessage($hexInput.value, $messageHex)
+}
 function convertRgbToHex() {
   let redHex = decimalToHex($redInput.value)
   let greenHex = decimalToHex($greenInput.value)
@@ -31,6 +50,8 @@ function convertRgbToHex() {
   paintText(colorComplement(newHex))
   $hexInput.value = newHex
   checkStatusBtnRgb()
+  $copyHex.style.display = 'block'
+  $copyRgb.style.display = 'none'
 }
 function convertHexToRgb() {
   let hex = $hexInput.value
@@ -40,6 +61,8 @@ function convertHexToRgb() {
   $greenInput.value = hexToDecimal(`${hex[3]}${hex[4]}`)
   $blueInput.value = hexToDecimal(`${hex[5]}${hex[6]}`)
   checkStatusBtnHex()
+  $copyRgb.style.display = 'block'
+  $copyHex.style.display = 'none'
 }
 function validateNumbers(event) {
   let charCode = (event.which) ? event.which : event.keyCode
@@ -62,22 +85,23 @@ function validateHexa(event) {
   return true
 }
 // Utils
+function showCopyMessage(text, container) {
+  container.innerText = `${text} copied to clipboard`
+  container.style.opacity = 1
+  setTimeout(() => {container.style.opacity = 0}, 3500)
+}
 function checkStatusBtnHex() {
   let redValue = $redInput.value
   let greenValue = $greenInput.value
   let blueValue = $blueInput.value
-  let status = !(checkRGBValue(redValue) && checkRGBValue(greenValue) && checkRGBValue(blueValue))
-  $copyRgb.disabled = status
-  $btnHex.disabled = status
+  $btnHex.disabled = !(checkRGBValue(redValue) && checkRGBValue(greenValue) && checkRGBValue(blueValue))
 }
 function checkRGBValue(value) {
   return !(value == '' || (value < 0 || value > 255))
 }
 function checkStatusBtnRgb() {
   let hexValue = $hexInput.value
-  let status = !(hexValue.length == 7)
-  $copyHex.disabled = status
-  $btnRgb.disabled = status
+  $btnRgb.disabled = !(hexValue.length == 7)
 }
 function paintBody(color) {
   $body.style.backgroundColor = color
@@ -86,6 +110,8 @@ function paintText(color) {
   $title.style.color = color
   $footer.style.color = color
   $landscape.style.color = color
+  $messageHex.style.color = color
+  $messageRgb.style.color = color
 }
 function decimalToHex(decimal) {
   let hex = parseInt(decimal).toString(16).toUpperCase()
